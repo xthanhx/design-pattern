@@ -1,25 +1,50 @@
-# Python code to demonstrate copy operations 
-  
-# importing "copy" for copy operations 
 import copy 
-  
-# initializing list 1 
-li1 = [1, 2, [3,5], 4] 
-  
-# using copy to shallow copy  
-li2 = copy.copy(li1) 
-  
-# original elements of list 
-print ("The original elements before shallow copying") 
-for i in range(0,len(li1)): 
-    print (li1[i],end=" ") 
-  
-print("\r") 
-  
-# adding and element to new list 
-li2[2][0] = 7
-  
-# checking if change is reflected 
-print ("The original elements after shallow copying") 
-for i in range(0,len( li1)): 
-    print (li1[i],end=" ") 
+
+class Cloneable:
+    def clone(self):
+        """
+        Cloneable
+        """
+        if isinstance( self, object):
+            return copy.deepcopy(self)
+        else:
+            print('the variable is not object')
+            return None
+        
+class Computer(Cloneable):
+    __os = ''
+    __office = ''
+    __antivirus = ''
+    __browser = ''
+    __others = ''
+    
+    def __init__( self, os = '', office = '', antivirus = '', browser = '', others = ''):
+        self.__os = os
+        self.__office = office
+        self.__antivirus = antivirus
+        self.__browser = browser
+        self.__others = others
+    
+    def SetOthers( self, others):
+        self.__others = others
+        
+    def GetInfo(self):
+        print("Computer [os=" + self.__os + ", office=" + self.__office + ", antivirus=" + self.__antivirus + ", browser=" + self.__browser + ", others=" + self.__others + "]")
+    
+        
+class Client:
+    def __init__( self, **kwagrs):
+        self.__computer = Computer(**kwagrs)
+    
+    def GetComputer(self):
+        return self.__computer
+
+test = Client(os = 'mac', office='microsolf', antivirus='bkav', browser='chrome', others='[cai gi do khac]').GetComputer()
+test.GetInfo()
+
+test2 = test.clone()
+
+test2.SetOthers('[set cai other khac na]')
+test2.GetInfo()
+
+
