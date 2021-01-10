@@ -1,4 +1,5 @@
 import copy 
+<<<<<<< HEAD
 
 class Cloneable:
     def clone(self):
@@ -48,3 +49,5 @@ test2.SetOthers('[set cai other khac na]')
 test2.GetInfo()
 
 
+=======
+>>>>>>> c41661ff6a643f0d50c1ea3c3eccc40b1e8e8e84
