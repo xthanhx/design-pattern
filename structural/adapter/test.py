@@ -19,6 +19,9 @@ class MovableTagetInterface:
     """
     def GetSpeed(self):
         pass
+    
+    def ConvertMPHtoKPH( self, mph):
+        pass
 
 class MovableAdapter(MovableTagetInterface):
     __adaptee = object
